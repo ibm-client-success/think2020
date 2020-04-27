@@ -81,10 +81,10 @@ After the import, you will see the data set. Click the dataset.
 Click one imported image and see the boundary box for the car. Users can edit the boundary definition. Because the dataset already contains the boundary definition, you can create a machine learning model with no edit.
 ![img](labguide/img/powerai08.png)  
 
-Close the boundary edit popup and select all images and click `Train model`.
+Go back to the data set menu and click `Train model`.
 ![img](labguide/img/powerai11.png)  
 
-Select `Object detection` and turn on `Advanced settings`.
+In this menu, you will create a new machine learning model. PowerAI Vision supports multiple model types such as Faster R-CNN, YOLO, and Detectron. In this lab, we will use Faster R-CNN. Select `Object detection` and turn on `Advanced settings`.
 
 ![img](labguide/img/powerai13.png)  
 
@@ -111,7 +111,12 @@ Save the file in `Desktop` directory.
 
 ![img](labguide/img/powerai17.png)
 
-Click `WinSCP` and log into the edge device. Then, you can copy `car_model.zip` to the edge device.
+Click `WinSCP` and log into the edge device.
+
+![img](labguide/img/powerai18.png)
+
+Select `car_model.zip` and click `Upload`. If necessary, overwrite the file.
+![img](labguide/img/powerai19.png)
  
 ### 2. Launching PowerAI Vision Inference with the machine learning model on the edge device
 
@@ -129,7 +134,7 @@ Deploy the PowerAI Vision inference server with the model `car_model.zip`.
 /opt/powerai-vision/dnn-deploy-service/bin/deploy_zip_model.sh -m car -p 6001 -g -1 car_model.zip
 ``` 
 
-This will take about 30 to 50 seconds. If you get an error, make sure that you are in your home directory. You can move to your home directory by executing `cd`. The following is an example of the deployment result:
+This will take about one to two minutes. If you get an error, make sure that you are in your home directory. You can move to your home directory by executing `cd`. The following is an example of the deployment result:
 
 ![img](labguide/img/edgedevice03.png)
 
@@ -181,11 +186,16 @@ You will see the following message.
 
 ![img](labguide/img/edgedevice05.png)
 
-It will take about one minute. You can monitor the node registration status with the following command.
+After the device registration, the edge agent automatically deploys the image capturing service. It will take about one minute. Repeat the following command to monitor the image capturing service deployment status.
 
 ```
 hzn agreement list
 ```
+
+Repeat the above command until agreement_creation_time, agreement_accepted_time, agreement_finalized_time, and agreement_execution_start_time are updated.
+
+![img](labguide/img/edgedevice08.png)
+
 
 About one minute later, check the status of `detector` service.
 
