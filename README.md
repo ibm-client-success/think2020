@@ -26,8 +26,8 @@ __Figure. Edge computing architecture for realtime data analysis__
 
 IBM provides solutions to implement edge computing systems as the followings:
 
-- __PowerAI Vision(IBM Visual Insights)__: PowerAI Vision makes computer vision with deep learning more accessible to business users. It includes an intuitive toolset that empowers subject matter experts to label, train, and deploy deep learning vision models, without coding or deep learning expertise. It includes the most popular deep learning frameworks and their dependencies, and it is built for easy and rapid deployment and increased team productivity. By combining PowerAI Vision software with accelerated IBM® Power Systems™, enterprises can rapidly deploy a fully optimized and supported platform with blazing performance. PowerAI Vision can be deployed on IBM Power Systems for the model training and inference. Inference component can be deployed separately and it supports both of IBM Power Systems and X86 systems.
-- __IBM Edge Computing Manager__: IBM Edge Computing Manager for Devices is designed specifically for edge device management to minimize deployment risks and to manage the service software lifecycle on edge devices fully autonomously.IBM Edge Computing Manager for Devices manages service software compliance automatically on edge devices without any manual intervention. On each edge device, decentralized and fully autonomous agent processes run governed by the policies that are specified during the machine registration with IBM Edge Computing Manager for Devices.
+- [__PowerAI Vision(IBM Visual Insights)__](https://www.ibm.com/products/ibm-visual-insights): PowerAI Vision makes computer vision with deep learning more accessible to business users. It includes an intuitive toolset that empowers subject matter experts to label, train, and deploy deep learning vision models, without coding or deep learning expertise. It includes the most popular deep learning frameworks and their dependencies, and it is built for easy and rapid deployment and increased team productivity. By combining PowerAI Vision software with accelerated IBM® Power Systems™, enterprises can rapidly deploy a fully optimized and supported platform with blazing performance. PowerAI Vision can be deployed on IBM Power Systems for the model training and inference. Inference component can be deployed separately and it supports both of IBM Power Systems and X86 systems.
+- [__IBM Edge Computing Manager__](https://www.ibm.com/cloud/edge-application-manager): IBM Edge Computing Manager for Devices is designed specifically for edge device management to minimize deployment risks and to manage the service software lifecycle on edge devices fully autonomously.IBM Edge Computing Manager for Devices manages service software compliance automatically on edge devices without any manual intervention. On each edge device, decentralized and fully autonomous agent processes run governed by the policies that are specified during the machine registration with IBM Edge Computing Manager for Devices.
 
 ### Lab environment
 
@@ -44,6 +44,8 @@ In the lab, you will access the systems as the followings:
 ## Getting Started
 
 In the lab, users will review the components of the edge architecture and perform end-to-end tasks to configure the edge device with the machine learning models.
+
+*TIP: retrieve your credentials before starting the lab.*
 
 ### 1. Log into the jump server
 
