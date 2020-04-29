@@ -50,20 +50,30 @@ In the lab, users will review the components of the edge architecture and perfor
 Users can use the jump server to access the systems.
 The jump server is a windows server and users will use Firefox, PuTTY, and WinSCP.
 
+Click `Enter` and login as `Administrator` 
+
 ![img](labguide/img/jumpserver01.png)  
 __Figure. Jump Server__
 
-  1. PuTTY: Use PuTTY to log into the edge device via ssh.
-  2. WinSCP: Use WinSCP to send files from the jump server to the edge device.
-  3. Firefox: Use Firefox to access the PowerAI Vision, Edge computing manager, and Image Capturing service. Users can use bookmarks in Firefox to access the systems.
+**Tools in the jump server that will be used in the lab:**
+
+  1. PuTTY: To log into the edge device via ssh.
+  2. WinSCP: To send files from the jump server to the edge device.
+  3. Firefox: To access the PowerAI Vision, Edge computing manager, and Image Capturing service. Users can use bookmarks in Firefox to access the systems.
   4. Clipboard icon: If users need to copy and paste commands from local PC to the jump server, open a target terminal, editor, or application first, click the clipboard icon, and put the command. Then, users can paste the command in the jump server.
-  5. Display icon: Use the display icon to change the screen resolution of the jump server.
+  5. Display icon: To change the screen resolution of the jump server.
 
 ### 2. Building a machine learning model in the PowerAI Vision
 
 In this task, users will build a machine learning model with a pre-defined dataset. 
 
-Check an IP address, userid, and password of the Power AI Vision server. Open Firefox and navigate to `https://[IP]/powerai-vision`. Ignore the warning message and continue, then you will see the following screen.
+Check an IP address, userid, and password of the Power AI Vision server. Open Firefox and navigate to `https://[IP]/powerai-vision`. 
+
+To copy and paste the URL from local PC to the jump server, copy it to the jumpserver's clipboard. To do so, click the clipboard icon, and paste the URL here. Then, you can paste the command in the jump server.
+
+![img](labguide/img/clipboard.png)
+
+Ignore the warning message and continue, then you will see the following screen.
 
 ![img](labguide/img/powerai01.png)  
 __Figure. Power AI Vision page__
@@ -84,7 +94,14 @@ Click one imported image and see the boundary box for the car. Users can edit th
 Go back to the data set menu and click `Train model`.
 ![img](labguide/img/powerai11.png)  
 
-In this menu, you will create a new machine learning model. PowerAI Vision supports multiple model types such as Faster R-CNN, YOLO, and Detectron. In this lab, we will use Faster R-CNN. Select `Object detection` and turn on `Advanced settings`.
+In this menu, you will create a new machine learning model. PowerAI Vision supports multiple model types such as Faster R-CNN, YOLO, and Detectron. In this lab, we will use Faster R-CNN. 
+
+NOTE: Do not change the model and leave it to the default name `car_model`
+
+**Select `Object detection` and turn on `Advanced settings`.**
+
+We will use `Faster R-CNN` model for training
+
 
 ![img](labguide/img/powerai13.png)  
 
@@ -95,7 +112,7 @@ Scroll down and change `Max iteration` value to `1000`. Then click `Train`. The 
 You will see the training progress status. This task takes about five minutes.
 ![img](labguide/img/powerai15.png)  
 
-_**[Note]** Each `Train model` task consumes one dedicated GPU and each user can use 1 GPU. Please don't trigger `Train Model` multiple times at the same time. In that case, other users are not able to perform this task. If there is no available GPU, please skip the training task and continue the next step. You can come back to this task later._
+_**[Note]** Each `Train model` task consumes one dedicated GPU and each user can use 1 GPU. **Please don't trigger `Train Model` multiple times**. In that case, other users are not able to perform this task. If there is no available GPU, please skip the training task and continue the next step. You can come back to this task later._
 
 Congratulations! You completed the Building a machine learning model task.
 
@@ -103,7 +120,11 @@ Congratulations! You completed the Building a machine learning model task.
 
 The machine learning model can be deployed with external tools through the API or can be distributed using Edge Manager's training model management function. In this lab, users will export and upload the model manually. __Users can skip this task because the machine learning model is already copied to the edge device.__
 
-Navigate to 1) `Models` menu, select 2) `CAR_MODEL`, and click 3) `Export Model` button. Please wait until a popup is shown. It takes about 30 seconds. Select 4) `Save File` and 5) `OK` button.
+
+1. Navigate to `Models` menu 
+2. select  `CAR_MODEL`, 
+3. click `Export Model` button. Please wait until a popup is shown. It takes about 30 seconds. 
+4. Select `Save File` and click `OK` button.
 
 ![img](labguide/img/powerai16.png)
 
@@ -123,6 +144,7 @@ Select `car_model.zip` and click `Upload`. If necessary, overwrite the file.
 The next step is to launch a PowerAI Vision Inference with the machine learning model. Users can use the model to launch PowerAI Vision Inference server in the edge device.
 
 From the jump server, double click `PuTTY` and select `Edge Device`. Then, click `Load` and `Open` button.
+
 ![img](labguide/img/edgedevice01.png)
 
 Login as `ibmuser`.
@@ -133,7 +155,16 @@ Deploy the PowerAI Vision inference server with the model `car_model.zip`.
 ```bash
 /opt/powerai-vision/dnn-deploy-service/bin/deploy_zip_model.sh -m car -p 6001 -g -1 car_model.zip
 ``` 
+The options used to deploy a model in the above command are explained below:
+```
+`-m` model-name - The docker container name for the deployed model.
 
+`-p` port - The port to deploy the model to.
+
+`-g` gpu - The GPU to deploy the model to. If specified as -1, the model will be deployed to a CPU.
+
+zipped_model_file - The full path and file name of the trained model that was exported from PowerAI Vision. It can be an image classification model or an object detection model, but must be in zip format.
+```
 This will take about one to two minutes. If you get an error, make sure that you are in your home directory. You can move to your home directory by executing `cd`. The following is an example of the deployment result:
 
 ![img](labguide/img/edgedevice03.png)
@@ -158,7 +189,12 @@ Congratulations! You completed the training mode deployment task.
 
 ### 3. Deploying the image capturing service
 
-In this task, users will register the edge device to the edge manager. The image capturing service is a docker container built in python. In the lab environment, the docker image is already configured. Once the edge device is registered, the edge agent in the edge device will automatically deploy the image capturing docker container in the edge device.
+In this task, users will register the edge device to the edge manager. The image capturing service is a docker container built in python. This image capturing service will be used as simulation for an edge device (camera) that monitors traffic. We already have the docker image (`detector`) that is used to create this service on the edge device. 
+
+This container is used to create a service that runs on the edge device. The service is then referenced to create a deployment pattern. For simplicity, a service and a deployment pattern have been created on the edge manager. 
+
+In the following steps, we'll make use of the deployment pattern and register the edge device will automatically deploy the image capturing docker container in the edge device.
+  
 
 ![img](labguide/img/imagecapturing01.png)
 
@@ -186,7 +222,17 @@ You will see the following message.
 
 ![img](labguide/img/edgedevice05.png)
 
-After the device registration, the edge agent automatically deploys the image capturing service. It will take about one minute. Repeat the following command to monitor the image capturing service deployment status.
+After the device registration, check the node list again. 
+
+```
+hzn exchange node list
+[
+  "icp/a79f61bea8e7b7e0cd9ccdff24e985f6922bc994"
+]
+```
+The edge device is now registered
+
+After the registration, the edge agent automatically deploys the image capturing service. It will take about one minute. Repeat the following command to monitor the image capturing service deployment status.
 
 ```
 hzn agreement list
@@ -234,3 +280,10 @@ Navigate to `Services` tab. You can see the `detector` service that is deployed 
 Congratulations! You completed the end-to-end deployment tasks.
 
 </details>
+
+## References
+[IBM Edge Computing for Devices](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.2.0/supported_environments/edge_devices/edge_devices.html)
+
+[PowerAI Vision guide](https://www.ibm.com/support/knowledgecenter/SSRU69_1.1.4/base/vision_pdf.pdf)
+
+[IBM Edge Computing articles](https://developer.ibm.com/depmodels/edge-computing/)
