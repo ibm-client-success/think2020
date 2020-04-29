@@ -284,8 +284,11 @@ Congratulations! You completed the end-to-end deployment tasks.
 </details>
 
 ## References
-[IBM Edge Computing for Devices](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.2.0/supported_environments/edge_devices/edge_devices.html)
 
-[PowerAI Vision guide](https://www.ibm.com/support/knowledgecenter/SSRU69_1.1.4/base/vision_pdf.pdf)
+[IBM Edge Computing for Devices](https://www.ibm.com/support/knowledgecenter/SSFKVV_3.2.1/devices/getting_started/edge_devices.html)
+
+[PowerAI Vision](https://www.ibm.com/support/knowledgecenter/en/SSRU69_1.1.5/base/vision_overview.html)
+
+[PowerAI Vision Inference Server](https://www.ibm.com/support/knowledgecenter/en/SSRU69_1.1.5/base/vision_inference_server.html)
 
 [IBM Edge Computing articles](https://developer.ibm.com/depmodels/edge-computing/)
