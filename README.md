@@ -31,7 +31,7 @@ IBM provides solutions to implement edge computing systems as the followings:
 
 ### Lab environment
 
-![img](labguide/img/architecture-lab.png)  
+![img](labguide/img/architecture-VM-mapping.png)  
 __Figure.  Lab configuration__
 
 In the lab, you will access the systems as the followings:
@@ -69,13 +69,15 @@ __Figure. Jump Server__
 
 In this task, users will build a machine learning model with a pre-defined dataset. 
 
-Check an IP address, userid, and password of the Power AI Vision server. Open Firefox and navigate to `https://[IP]/powerai-vision`. 
+URL, userid, and password to access the Power AI Vision server are required to finish this section.  **Refer to the lab guide for instructions get these details**
+
+Open Firefox and navigate to `https://[IP]/powerai-vision`. 
 
 To copy and paste the URL from local PC to the jump server, copy it to the jumpserver's clipboard. To do so, click the clipboard icon, and paste the URL here. Then, you can paste the content from the clipboard anywhere in the jump server with a `right click`.
 
 ![img](labguide/img/clipboard.png)
 
-Ignore the warning message and continue, then you will see the following screen.
+Login to the PowerAI vision server dashboard. Ignore the warning message and continue, then you will see the following screen.
 
 ![img](labguide/img/powerai01.png)  
 __Figure. Power AI Vision page__
