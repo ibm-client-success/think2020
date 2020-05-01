@@ -69,7 +69,7 @@ In this task, users will build a machine learning model with a pre-defined datas
 
 Check an IP address, userid, and password of the Power AI Vision server. Open Firefox and navigate to `https://[IP]/powerai-vision`. 
 
-To copy and paste the URL from local PC to the jump server, copy it to the jumpserver's clipboard. To do so, click the clipboard icon, and paste the URL here. Then, you can paste the command in the jump server.
+To copy and paste the URL from local PC to the jump server, copy it to the jumpserver's clipboard. To do so, click the clipboard icon, and paste the URL here. Then, you can paste the content from the clipboard anywhere in the jump server with a `right click`.
 
 ![img](labguide/img/clipboard.png)
 
