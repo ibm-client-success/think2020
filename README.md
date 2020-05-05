@@ -283,8 +283,6 @@ Navigate to `Services` tab. You can see the `detector` service that is deployed 
 
 Congratulations! You completed the end-to-end deployment tasks.
 
-</details>
-
 ## References
 
 [IBM Edge Computing for Devices](https://www.ibm.com/support/knowledgecenter/SSFKVV_3.2.1/devices/getting_started/edge_devices.html)
